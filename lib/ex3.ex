@@ -45,3 +45,23 @@ defmodule Ex32 do
     |> String.upcase()
   end
 end
+
+defmodule Ex33 do
+  def solve(), do: 1..100 |> Enum.map(&do_solve/1)
+
+  def do_solve(num) do
+    cond do
+      rem(num, 15) == 0 ->
+        "FizzBuzz"
+
+      rem(num, 5) == 0 ->
+        "Buzz"
+
+      rem(num, 3) == 0 ->
+        "Fizz"
+
+      true ->
+        num
+    end
+  end
+end

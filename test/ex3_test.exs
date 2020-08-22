@@ -43,4 +43,13 @@ defmodule Ex3Test do
     assert Ex32.solve(data) == "CROSSMYHEART"
     assert Ex32.solve("P\nY\nm\nI") == "PYMI"
   end
+
+  test "Ex33 FizzBuzz" do
+    cases =
+      [{1, 1}, {2, 2}, {3, "Fizz"}, {5, "Buzz"}, {15, "FizzBuzz"}] |> Enum.map(fn {_, r} -> r end)
+
+    result = Ex33.solve()
+    rhs = [1, 2, 3, 5, 15] |> Enum.map(fn i -> Enum.at(result, i - 1) end)
+    assert cases == rhs
+  end
 end
