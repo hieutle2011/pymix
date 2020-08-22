@@ -52,4 +52,12 @@ defmodule Ex3Test do
     rhs = [1, 2, 3, 5, 15] |> Enum.map(fn i -> Enum.at(result, i - 1) end)
     assert cases == rhs
   end
+
+  test "Ex34 get filename remove ext with input '....slsslslsls...sls'" do
+    assert Ex34.solve("....slsslslsls...sls") == "....slsslslsls.."
+  end
+
+  test "Ex34 get filename remove ext with input 'maria.data.mp9'" do
+    assert Ex34.solve("maria.data.mp9") == "maria.data"
+  end
 end

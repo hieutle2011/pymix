@@ -65,3 +65,24 @@ defmodule Ex33 do
     end
   end
 end
+
+defmodule Ex34 do
+  def solve(fname) do
+    with {name, _ext} <- extract(fname) do
+      name
+    end
+  end
+
+  def extract(fname, ext_len \\ 3)
+
+  def extract(fname, ext_len) when is_binary(fname) do
+    with len <- String.length(fname),
+         dot_index <- len - ext_len - 1,
+         name <- String.slice(fname, 0, dot_index),
+         ext <- String.slice(fname, dot_index, len - 1) do
+      {name, ext}
+    end
+  end
+
+  def extract(_, _), do: raise(ArgumentError, message: "fname should be string")
+end
