@@ -35,3 +35,13 @@ defmodule Ex31 do
     for x <- 1..10, do: {x, {int_to_string(x), solve(x)}}
   end
 end
+
+defmodule Ex32 do
+  def solve(str) do
+    str
+    |> String.split("\n", trim: true)
+    |> Enum.map(&String.first(&1))
+    |> Enum.join("")
+    |> String.upcase()
+  end
+end
