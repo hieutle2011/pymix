@@ -70,4 +70,18 @@ defmodule Ex3Test do
              [5, "Chiu"]
            ]
   end
+
+  test "Ex36 day in month" do
+    cases = [
+      {1, {"January", 31}},
+      {2, {"February", 28}},
+      {3, {"March", 31}},
+      {4, {"April", 30}},
+      {7, {"July", 31}},
+      {8, {"August", 31}},
+      {9, {"September", 30}}
+    ]
+
+    assert cases == [1, 2, 3, 4, 7, 8, 9] |> Enum.map(fn i -> {i, Ex36.solve(i)} end)
+  end
 end

@@ -107,3 +107,21 @@ defmodule Ex35 do
     |> Enum.map(fn {elem, idx} -> [idx, elem] end)
   end
 end
+
+defmodule Ex36 do
+  def solve(month) do
+    case month do
+      1 -> {"January", 31}
+      2 -> {"February", 28}
+      3 -> {"March", 31}
+      4 -> {"April", 30}
+      7 -> {"July", 31}
+      8 -> {"August", 31}
+      9 -> {"September", 30}
+      10 -> {"October", 31}
+      11 -> {"November", 30}
+      12 -> {"December", 31}
+      _ -> "Month doesn't exist"
+    end
+  end
+end
