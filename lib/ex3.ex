@@ -151,3 +151,11 @@ defmodule Ex38 do
     end
   end
 end
+
+defmodule Ex39 do
+  def solve() do
+    for a <- 9..1, b <- 1..9, c <- 1..9, cond(a, b, c), do: {a, b, c}
+  end
+
+  def cond(a, b, c), do: a * c + b == 10 * c
+end

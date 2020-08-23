@@ -96,4 +96,10 @@ defmodule Ex3Test do
     assert Ex38.solve("C") == false
     assert Ex38.solve("CC") == false
   end
+
+  test "Ex39 simple math with 3 variables" do
+    results = Ex39.solve()
+    assert {9, 1, 1} == List.first(results)
+    assert {1, 9, 1} == List.last(results)
+  end
 end
