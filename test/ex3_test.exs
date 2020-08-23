@@ -60,4 +60,14 @@ defmodule Ex3Test do
   test "Ex34 get filename remove ext with input 'maria.data.mp9'" do
     assert Ex34.solve("maria.data.mp9") == "maria.data"
   end
+
+  test "Ex35 elem with index" do
+    assert Ex35.solve(["I", "Love", "You", "Chiu", "Chiu"]) == [
+             [1, "I"],
+             [2, "Love"],
+             [3, "You"],
+             [4, "Chiu"],
+             [5, "Chiu"]
+           ]
+  end
 end

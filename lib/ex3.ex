@@ -99,3 +99,11 @@ defmodule Ex34 do
     end
   end
 end
+
+defmodule Ex35 do
+  def solve(arr) do
+    arr
+    |> Enum.with_index(1)
+    |> Enum.map(fn {elem, idx} -> [idx, elem] end)
+  end
+end
