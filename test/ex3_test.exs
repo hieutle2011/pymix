@@ -88,4 +88,12 @@ defmodule Ex3Test do
   test "Ex37 multiple of 5" do
     assert "95 == 19 * 5" == Ex37.solve() |> List.last()
   end
+
+  test "Ex38 palindrome " do
+    assert Ex38.solve("Able was I ere I saw Elba") == true
+    assert Ex38.solve("Civi") == false
+    assert Ex38.solve("Civic") == true
+    assert Ex38.solve("C") == false
+    assert Ex38.solve("CC") == false
+  end
 end

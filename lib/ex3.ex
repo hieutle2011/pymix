@@ -136,3 +136,18 @@ defmodule Ex37 do
     "#{num * 5} == #{num} * 5"
   end
 end
+
+defmodule Ex38 do
+  def solve(str) do
+    if String.length(str) <= 2 do
+      false
+    else
+      newstr =
+        str
+        |> String.replace(" ", "")
+        |> String.downcase()
+
+      newstr == String.reverse(newstr)
+    end
+  end
+end
