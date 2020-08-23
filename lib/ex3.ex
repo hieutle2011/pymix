@@ -68,21 +68,34 @@ end
 
 defmodule Ex34 do
   def solve(fname) do
-    with {name, _ext} <- extract(fname) do
+    with {name, _ext} <- do_extract_v2(fname) do
       name
     end
   end
 
-  def extract(fname, ext_len \\ 3)
-
-  def extract(fname, ext_len) when is_binary(fname) do
-    with len <- String.length(fname),
-         dot_index <- len - ext_len - 1,
-         name <- String.slice(fname, 0, dot_index),
-         ext <- String.slice(fname, dot_index, len - 1) do
-      {name, ext}
+  def do_extract_v2(fname) when is_binary(fname) do
+    case String.contains?(fname, ".") do
+      false -> {fname, nil}
+      true -> extract_v2(fname)
     end
   end
 
-  def extract(_, _), do: raise(ArgumentError, message: "fname should be string")
+  def do_extract_v2(_), do: raise(ArgumentError, message: "fname should be string")
+
+  def extract_v2(fname, name \\ "")
+
+  def extract_v2(fname, name) when is_binary(fname) do
+    with arr = String.graphemes(fname),
+         [head | tail] = arr do
+      case Enum.find(tail, &(&1 == ".")) do
+        nil ->
+          {name, Enum.join(tail)}
+
+        _ ->
+          name = name <> head
+          fname = Enum.join(tail)
+          extract_v2(fname, name)
+      end
+    end
+  end
 end
