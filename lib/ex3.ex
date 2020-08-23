@@ -68,37 +68,58 @@ end
 
 defmodule Ex34 do
   def solve(fname) do
-    with {name, _ext} <- do_extract_v2(fname) do
-      name
-    end
+    fname
+    |> String.graphemes()
+    |> do_extract()
+    |> Enum.join()
+    |> String.reverse()
   end
 
-  def do_extract_v2(fname) when is_binary(fname) do
-    case String.contains?(fname, ".") do
-      false -> {fname, nil}
-      true -> extract_v2(fname)
-    end
-  end
+  def do_extract(chars, arr \\ [])
 
-  def do_extract_v2(_), do: raise(ArgumentError, message: "fname should be string")
-
-  def extract_v2(fname, name \\ "")
-
-  def extract_v2(fname, name) when is_binary(fname) do
-    with arr = String.graphemes(fname),
-         [head | tail] = arr do
+  def do_extract(chars, arr) do
+    with [head | tail] = chars do
       case Enum.find(tail, &(&1 == ".")) do
-        nil ->
-          {name, Enum.join(tail)}
-
-        _ ->
-          name = name <> head
-          fname = Enum.join(tail)
-          extract_v2(fname, name)
+        nil -> arr
+        _ -> do_extract(tail, [head | arr])
       end
     end
   end
 end
+
+# defmodule Ex34 do
+#   def solve(fname) do
+#     with {name, _ext} <- do_extract_v2(fname) do
+#       name
+#     end
+#   end
+
+#   def do_extract_v2(fname) when is_binary(fname) do
+#     case String.contains?(fname, ".") do
+#       false -> {fname, nil}
+#       true -> extract_v2(fname)
+#     end
+#   end
+
+#   def do_extract_v2(_), do: raise(ArgumentError, message: "fname should be string")
+
+#   def extract_v2(fname, name \\ "")
+
+#   def extract_v2(fname, name) when is_binary(fname) do
+#     with arr = String.graphemes(fname),
+#          [head | tail] = arr do
+#       case Enum.find(tail, &(&1 == ".")) do
+#         nil ->
+#           {name, Enum.join(tail)}
+
+#         _ ->
+#           name = name <> head
+#           fname = Enum.join(tail)
+#           extract_v2(fname, name)
+#       end
+#     end
+#   end
+# end
 
 defmodule Ex35 do
   def solve(arr) do
