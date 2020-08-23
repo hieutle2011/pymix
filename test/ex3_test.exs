@@ -84,4 +84,8 @@ defmodule Ex3Test do
 
     assert cases == [1, 2, 3, 4, 7, 8, 9] |> Enum.map(fn i -> {i, Ex36.solve(i)} end)
   end
+
+  test "Ex37 multiple of 5" do
+    assert "95 == 19 * 5" == Ex37.solve() |> List.last()
+  end
 end

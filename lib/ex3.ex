@@ -125,3 +125,14 @@ defmodule Ex36 do
     end
   end
 end
+
+defmodule Ex37 do
+  def solve() do
+    1..19
+    |> Enum.map(&do_ex37/1)
+  end
+
+  def do_ex37(num) do
+    "#{num * 5} == #{num} * 5"
+  end
+end
