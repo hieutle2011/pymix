@@ -36,3 +36,14 @@ defmodule Ex42 do
     @target - octal
   end
 end
+
+defmodule Ex43 do
+  @offset ?a - 1
+  def solve(str) do
+    str
+    |> String.downcase()
+    |> String.to_charlist()
+    |> Enum.map(&(&1 - @offset))
+    |> Enum.sum()
+  end
+end
