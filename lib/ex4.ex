@@ -47,3 +47,29 @@ defmodule Ex43 do
     |> Enum.sum()
   end
 end
+
+# TODO: Refactor later
+defmodule Ex44 do
+  def solve() do
+    do_solve() |> Enum.count()
+    # do_solve()
+  end
+
+  def do_solve() do
+    for a <- 1..9,
+        b <- 1..9,
+        c <- 1..9,
+        d <- 1..9,
+        e <- 1..9,
+        f <- 1..9,
+        g <- 1..9,
+        h <- 1..9,
+        i <- 1..9,
+        cond(a, b, c, d, e, f, g, h, i),
+        do: 1
+  end
+
+  def cond(a, b, c, d, e, f, g, h, i) do
+    13 * b * i + g * h * c == (87 + f - (a + d + 12 * e)) * c * i
+  end
+end

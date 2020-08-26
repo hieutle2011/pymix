@@ -18,4 +18,11 @@ defmodule Ex4Test do
     assert Ex43.solve("discipline") == 100
     assert Ex43.solve("attitude") == 100
   end
+
+  describe "Slow test" do
+    @describetag :slow
+    test "Test Ex44 " do
+      assert Ex44.solve() == 453_542
+    end
+  end
 end
