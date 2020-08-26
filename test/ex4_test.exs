@@ -25,4 +25,8 @@ defmodule Ex4Test do
       assert Ex44.solve() == 453_542
     end
   end
+
+  test "Test Ex45" do
+    assert Ex45.solve([1, 2, 3, 4, 5]) == {15, 120}
+  end
 end
