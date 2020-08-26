@@ -75,15 +75,8 @@ defmodule Ex44 do
 end
 
 defmodule Ex45 do
-  def solve(arr) do
-    solve(arr, 0, 1)
-  end
-
-  def solve([head | tail], sum, prod) do
-    solve(tail, head + sum, head * prod)
-  end
-
-  def solve([], sum, prod) do
-    {sum, prod}
-  end
+  def solve(numbers), do: solve(numbers, 0, 1)
+  def solve([h | t], sum, prod), do: solve(t, h + sum, h * prod)
+  def solve([], 0, _prod), do: {0, 0}
+  def solve([], sum, prod), do: {sum, prod}
 end

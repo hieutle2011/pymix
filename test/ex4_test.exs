@@ -29,4 +29,8 @@ defmodule Ex4Test do
   test "Test Ex45" do
     assert Ex45.solve([1, 2, 3, 4, 5]) == {15, 120}
   end
+
+  test "Test Ex45 empty arr" do
+    assert Ex45.solve([]) == {0, 0}
+  end
 end
