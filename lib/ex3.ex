@@ -67,23 +67,38 @@ defmodule Ex33 do
 end
 
 defmodule Ex34 do
-  def solve(fname) do
-    fname
-    |> String.graphemes()
-    |> do_extract()
-    |> Enum.join()
-    |> String.reverse()
+  def solve(fname), do: rootname(fname)
+
+  def rootname(fname) when is_binary(fname) do
+    rootname(String.to_charlist(fname))
   end
 
-  def do_extract(chars, arr \\ [])
+  def rootname(fname0) do
+    rootname(fname0, [], [])
+  end
 
-  def do_extract(chars, arr) do
-    with [head | tail] = chars do
-      case Enum.member?(tail, ".") do
-        false -> arr
-        true -> do_extract(tail, [head | arr])
-      end
-    end
+  def rootname([?/ | rest], root, ext) do
+    rootname(rest, '/' ++ ext ++ root, [])
+  end
+
+  def rootname([?. | rest], root, []) do
+    rootname(rest, root, '.')
+  end
+
+  def rootname([?. | rest], root, ext) do
+    rootname(rest, ext ++ root, '.')
+  end
+
+  def rootname([char | rest], root, []) when is_integer(char) do
+    rootname(rest, [char | root], [])
+  end
+
+  def rootname([char | rest], root, ext) when is_integer(char) do
+    rootname(rest, root, [char | ext])
+  end
+
+  def rootname([], root, _ext) do
+    root |> Enum.reverse() |> to_string()
   end
 end
 
