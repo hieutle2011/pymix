@@ -80,3 +80,35 @@ defmodule Ex45 do
   def solve([], 0, _prod), do: {0, 0}
   def solve([], sum, prod), do: {sum, prod}
 end
+
+defmodule Ex46 do
+  def solve(str) when is_binary(str) do
+    str
+    |> String.to_charlist()
+    |> solve([])
+  end
+
+  def solve([]) do
+    []
+  end
+
+  def solve([h | t], arr) when h >= ?0 and h <= ?9 do
+    solve(t, [h | arr])
+  end
+
+  def solve([_ | t], [',' | _] = arr) do
+    solve(t, arr)
+  end
+
+  def solve([_ | t], arr) do
+    solve(t, [',' | arr])
+  end
+
+  def solve([], arr) do
+    arr
+    |> to_string()
+    |> String.reverse()
+    |> String.split(",", trim: true)
+    |> Enum.map(&String.to_integer(&1))
+  end
+end

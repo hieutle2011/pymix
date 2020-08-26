@@ -33,4 +33,22 @@ defmodule Ex4Test do
   test "Test Ex45 empty arr" do
     assert Ex45.solve([]) == {0, 0}
   end
+
+  test "Test Ex46: get numbers in a text" do
+    assert Ex46.solve("Em ơi có bao nhiêu, 60năm cuộc đời, 20 năm đầu, sung sướng0bao lâu") == [
+             60,
+             20,
+             0
+           ]
+
+    assert Ex46.solve("Em ơi có bao nhiêu, 60năm cuộc đời, 20 năm đầu, sung sướng0bao lâu1") == [
+             60,
+             20,
+             0,
+             1
+           ]
+
+    assert Ex46.solve("Em ơi sung sướng") == []
+    assert Ex46.solve("") == []
+  end
 end
