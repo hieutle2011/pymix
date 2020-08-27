@@ -130,3 +130,17 @@ defmodule Ex47 do
     end
   end
 end
+
+defmodule Ex48 do
+  @perimeter 24
+  def solve() do
+    for a <- 1..10,
+        b <- 1..10,
+        cond(a, b, @perimeter - a - b),
+        do: {a, b, @perimeter - a - b}
+  end
+
+  def cond(a, b, c) do
+    a * a + b * b == c * c
+  end
+end

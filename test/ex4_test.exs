@@ -57,4 +57,9 @@ defmodule Ex4Test do
     assert Ex47.solve(1990) == "Canh Ngọ"
     assert Ex47.solve(1991) == "Tân Mui"
   end
+
+  test "48" do
+    assert {6, 8, 10} in Ex48.solve()
+    assert length(Ex48.solve()) == 2
+  end
 end
