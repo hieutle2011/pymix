@@ -62,4 +62,13 @@ defmodule Ex4Test do
     assert {6, 8, 10} in Ex48.solve()
     assert length(Ex48.solve()) == 2
   end
+
+  test "49" do
+    assert Ex49.solve([1, 4, 2, 3]) == 4
+    assert Ex49.solve([4]) == 4
+
+    assert_raise Enum.EmptyError, fn ->
+      Ex49.solve([])
+    end
+  end
 end

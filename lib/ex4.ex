@@ -144,3 +144,29 @@ defmodule Ex48 do
     a * a + b * b == c * c
   end
 end
+
+defmodule Ex49 do
+  def solve([head | []]) do
+    head
+  end
+
+  def solve([]) do
+    raise Enum.EmptyError
+  end
+
+  def solve([_ | _] = arr) do
+    solve(arr, nil)
+  end
+
+  def solve([head | tail], max) when max == nil or head > max do
+    solve(tail, head)
+  end
+
+  def solve([_head | tail], max) do
+    solve(tail, max)
+  end
+
+  def solve([], max) do
+    max
+  end
+end
