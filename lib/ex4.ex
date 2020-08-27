@@ -112,3 +112,21 @@ defmodule Ex46 do
     |> Enum.map(&String.to_integer(&1))
   end
 end
+
+defmodule Ex47 do
+  @can ["giáp", "ất", "bính", "đinh", "mậu", "kỷ", "canh", "tân", "nhâm", "quý"]
+  @chi ["tý", "sửu", "dần", "mão", "thìn", "tị", "ngọ", "mui", "thân", "dậu", "tuất", "hợi"]
+  @can_length 10
+  @chi_length 12
+  # 2017 Dinh Dau
+  # rem(2017, 10) = 7 -> move 6 steps to 3rd index (Dinh)
+  @can_offset 6
+  # rem(2017, 12) = 1 -> move 8 stesp to 9th index (Dau)
+  @chi_offset 8
+  def solve(year) do
+    with can <- Enum.at(@can, rem(year + @can_offset, @can_length)),
+         chi <- Enum.at(@chi, rem(year + @chi_offset, @chi_length)) do
+      String.capitalize(can) <> " " <> String.capitalize(chi)
+    end
+  end
+end

@@ -51,4 +51,10 @@ defmodule Ex4Test do
     assert Ex46.solve("Em ơi sung sướng") == []
     assert Ex46.solve("") == []
   end
+
+  test "Test 47 can chi" do
+    assert Ex47.solve(2017) == "Đinh Dậu"
+    assert Ex47.solve(1990) == "Canh Ngọ"
+    assert Ex47.solve(1991) == "Tân Mui"
+  end
 end
