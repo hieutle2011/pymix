@@ -146,10 +146,6 @@ defmodule Ex48 do
 end
 
 defmodule Ex49 do
-  def solve([head | []]) do
-    head
-  end
-
   def solve([]) do
     raise Enum.EmptyError
   end
@@ -158,7 +154,11 @@ defmodule Ex49 do
     solve(arr, nil)
   end
 
-  def solve([head | tail], max) when max == nil or head > max do
+  def solve([head | tail], nil) do
+    solve(tail, head)
+  end
+
+  def solve([head | tail], max) when head > max do
     solve(tail, head)
   end
 
