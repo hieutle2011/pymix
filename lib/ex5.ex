@@ -26,3 +26,69 @@ defmodule Ex51 do
     "<span style='color:#{code}'>#{char}</span>\n"
   end
 end
+
+defmodule Ex52 do
+  @data [
+    %{
+      name: "Hoang",
+      phone: "0988888888",
+      languages: [
+        "Python",
+        "C",
+        "SQL",
+        "HTML",
+        "CSS",
+        "JavaScript",
+        "Golang"
+      ]
+    },
+    %{name: "Duy", girl_friend: "Maria"},
+    %{name: "Dai", girl_friend: "Angela"},
+    %{name: "Tu"}
+  ]
+
+  def solve() do
+    hoang_old_langs = Enum.find(@data, &(&1.name == "Hoang"))[:languages]
+
+    @data
+    |> Enum.map(&update(&1, %{languages: hoang_old_langs}))
+  end
+
+  def update(%{name: "Hoang", languages: langs} = student, _) do
+    with new_langs <- langs ++ ["Elixir"] do
+      student
+      |> Map.merge(%{languages: new_langs})
+    end
+  end
+
+  def update(%{name: "Tu"} = student, langs) do
+    student
+    |> Map.put(:girl_friend, "Do Anh")
+    |> Map.merge(langs)
+  end
+
+  def update(%{name: "Duy"} = student, langs) do
+    student
+    |> Map.delete(:girl_friend)
+    |> Map.merge(langs)
+  end
+
+  def update(student, langs) do
+    student |> Map.merge(langs)
+  end
+end
+
+defmodule Ex53 do
+  @pattern ["”", ".", "“", ",", "’", ";"]
+
+  def solve(data) when is_binary(data) do
+    data
+    |> String.replace(@pattern, "")
+    |> String.downcase()
+    |> String.split(" ")
+    |> Enum.frequencies()
+    |> Map.to_list()
+    |> Enum.sort(&(elem(&1, 1) > elem(&2, 1)))
+    |> Enum.take(10)
+  end
+end
