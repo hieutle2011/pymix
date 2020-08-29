@@ -92,3 +92,24 @@ defmodule Ex53 do
     |> Enum.take(10)
   end
 end
+
+defmodule Ex54 do
+  @number_of_line 30_000_000
+  @str "111111111111111111111111111111\n"
+  def solve() do
+    stream =
+      1..@number_of_line
+      |> Stream.map(&do_map/1)
+
+    stream
+    |> Stream.into(File.stream!("/tmp/big_file.txt"))
+    |> Stream.run()
+
+    stream
+    |> Stream.take(-10)
+    |> Enum.to_list()
+  end
+
+  def do_map(num) when rem(num, 2) == 1, do: @str
+  def do_map(num), do: to_string(num * 2) <> "\n"
+end
