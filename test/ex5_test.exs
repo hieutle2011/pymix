@@ -64,4 +64,14 @@ defmodule Ex5Test do
              ]
     end
   end
+
+  test "56" do
+    term1 = %{math: 3, python: 5, data: 2}
+    term2 = %{math: 7, python: 9, SQL: 8, HTML: 6}
+    res = Ex56.solve(term1, term2)
+
+    assert res[:python] == 9
+    assert res[:math] == 7
+    assert res[:data] == 2
+  end
 end

@@ -113,3 +113,9 @@ defmodule Ex54 do
   def do_map(num) when rem(num, 2) == 1, do: @str
   def do_map(num), do: to_string(num * 2) <> "\n"
 end
+
+defmodule Ex56 do
+  def solve(obj_1, obj_2) do
+    Map.merge(obj_1, obj_2)
+  end
+end
