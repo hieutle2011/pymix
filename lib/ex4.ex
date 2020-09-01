@@ -1,4 +1,7 @@
 defmodule Ex41 do
+  @moduledoc """
+  Solution for ex41
+  """
   def solve(str) do
     str
     |> String.split(".")
@@ -19,6 +22,9 @@ defmodule Ex41 do
 end
 
 defmodule Ex42 do
+  @moduledoc """
+  Solution for ex42
+  """
   @target 0o777
 
   @doc """
@@ -38,6 +44,9 @@ defmodule Ex42 do
 end
 
 defmodule Ex43 do
+  @moduledoc """
+  Solution for ex43
+  """
   @offset ?a - 1
   def solve(str) do
     str
@@ -50,12 +59,15 @@ end
 
 # TODO: Refactor later
 defmodule Ex44 do
-  def solve() do
+  @moduledoc """
+  Solution for ex44
+  """
+  def solve do
     do_solve() |> Enum.count()
     # do_solve()
   end
 
-  def do_solve() do
+  def do_solve do
     for a <- 1..9,
         b <- 1..9,
         c <- 1..9,
@@ -65,16 +77,19 @@ defmodule Ex44 do
         g <- 1..9,
         h <- 1..9,
         i <- 1..9,
-        cond(a, b, c, d, e, f, g, h, i),
+        check(a, b, c, d, e, f, g, h, i),
         do: 1
   end
 
-  def cond(a, b, c, d, e, f, g, h, i) do
+  def check(a, b, c, d, e, f, g, h, i) do
     13 * b * i + g * h * c == (87 + f - (a + d + 12 * e)) * c * i
   end
 end
 
 defmodule Ex45 do
+  @moduledoc """
+  Solution for ex45
+  """
   def solve(numbers), do: solve(numbers, 0, 1)
   def solve([h | t], sum, prod), do: solve(t, h + sum, h * prod)
   def solve([], 0, _prod), do: {0, 0}
@@ -82,6 +97,9 @@ defmodule Ex45 do
 end
 
 defmodule Ex46 do
+  @moduledoc """
+  Solution for ex46
+  """
   def solve(str) when is_binary(str) do
     str
     |> String.to_charlist()
@@ -114,6 +132,9 @@ defmodule Ex46 do
 end
 
 defmodule Ex47 do
+  @moduledoc """
+  Solution for ex47
+  """
   @can ["giáp", "ất", "bính", "đinh", "mậu", "kỷ", "canh", "tân", "nhâm", "quý"]
   @chi ["tý", "sửu", "dần", "mão", "thìn", "tị", "ngọ", "mui", "thân", "dậu", "tuất", "hợi"]
   @can_length 10
@@ -132,20 +153,26 @@ defmodule Ex47 do
 end
 
 defmodule Ex48 do
+  @moduledoc """
+  Solution for ex48
+  """
   @perimeter 24
-  def solve() do
+  def solve do
     for a <- 1..10,
         b <- 1..10,
-        cond(a, b, @perimeter - a - b),
+        check(a, b, @perimeter - a - b),
         do: {a, b, @perimeter - a - b}
   end
 
-  def cond(a, b, c) do
+  def check(a, b, c) do
     a * a + b * b == c * c
   end
 end
 
 defmodule Ex49 do
+  @moduledoc """
+  Solution for ex49
+  """
   def solve([]) do
     raise Enum.EmptyError
   end

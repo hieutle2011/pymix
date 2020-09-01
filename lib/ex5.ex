@@ -1,11 +1,14 @@
 defmodule Ex51 do
+  @moduledoc """
+  Solution for ex51
+  """
   @data %{
     green: "#3cba54",
     yellow: "#f4c20d",
     red: "#db3236",
     blue: "#4885ed"
   }
-  def solve() do
+  def solve do
     result =
       [G: :blue, o: :red, o: :yellow, g: :blue, l: :green, e: :red]
       |> Enum.map(fn {char, color} -> {char, @data[color]} end)
@@ -15,7 +18,7 @@ defmodule Ex51 do
       |> Enum.map(fn item -> span(item) end)
       |> Enum.reduce(fn ele, acc -> ele <> acc end)
 
-    with {:ok, file} = File.open("/tmp/google.html", [:write]),
+    with {:ok, file} <- File.open("/tmp/google.html", [:write]),
          :ok <- IO.binwrite(file, content),
          :ok <- File.close(file) do
       result
@@ -28,6 +31,9 @@ defmodule Ex51 do
 end
 
 defmodule Ex52 do
+  @moduledoc """
+  Solution for ex52
+  """
   @data [
     %{
       name: "Hoang",
@@ -47,7 +53,7 @@ defmodule Ex52 do
     %{name: "Tu"}
   ]
 
-  def solve() do
+  def solve do
     hoang_old_langs = Enum.find(@data, &(&1.name == "Hoang"))[:languages]
 
     @data
@@ -79,6 +85,9 @@ defmodule Ex52 do
 end
 
 defmodule Ex53 do
+  @moduledoc """
+  Solution for ex52
+  """
   @pattern ["”", ".", "“", ",", "’", ";"]
 
   def solve(data) when is_binary(data) do
@@ -94,9 +103,12 @@ defmodule Ex53 do
 end
 
 defmodule Ex54 do
+  @moduledoc """
+  Solution for ex54
+  """
   @number_of_line 30_000_000
   @str "111111111111111111111111111111\n"
-  def solve() do
+  def solve do
     stream =
       1..@number_of_line
       |> Stream.map(&do_map/1)
@@ -115,6 +127,9 @@ defmodule Ex54 do
 end
 
 defmodule Ex56 do
+  @moduledoc """
+  Solution for ex56
+  """
   def solve(obj_1, obj_2) do
     Map.merge(obj_1, obj_2)
   end

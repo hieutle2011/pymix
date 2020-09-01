@@ -1,4 +1,7 @@
 defmodule Ex31 do
+  @moduledoc """
+  Solution for ex31
+  """
   alias Math
 
   def solve(number) do
@@ -31,12 +34,15 @@ defmodule Ex31 do
     end
   end
 
-  def main() do
+  def main do
     for x <- 1..10, do: {x, {int_to_string(x), solve(x)}}
   end
 end
 
 defmodule Ex32 do
+  @moduledoc """
+  Solution for ex32
+  """
   def solve(str) do
     str
     |> String.split("\n", trim: true)
@@ -47,7 +53,10 @@ defmodule Ex32 do
 end
 
 defmodule Ex33 do
-  def solve(), do: 1..100 |> Enum.map(&do_solve/1)
+  @moduledoc """
+  Solution for ex33
+  """
+  def solve, do: 1..100 |> Enum.map(&do_solve/1)
 
   def do_solve(num) do
     cond do
@@ -67,6 +76,9 @@ defmodule Ex33 do
 end
 
 defmodule Ex34 do
+  @moduledoc """
+  Solution for ex34
+  """
   def solve(fname), do: rootname(fname)
 
   def rootname(fname) when is_binary(fname) do
@@ -103,6 +115,9 @@ defmodule Ex34 do
 end
 
 defmodule Ex35 do
+  @moduledoc """
+  Solution for ex35
+  """
   def solve(arr) do
     arr
     |> Enum.with_index(1)
@@ -111,6 +126,9 @@ defmodule Ex35 do
 end
 
 defmodule Ex36 do
+  @moduledoc """
+  Solution for ex36
+  """
   def solve(month) do
     case month do
       1 -> {"January", 31}
@@ -129,7 +147,10 @@ defmodule Ex36 do
 end
 
 defmodule Ex37 do
-  def solve() do
+  @moduledoc """
+  Solution for ex37
+  """
+  def solve do
     1..19
     |> Enum.map(&do_ex37/1)
   end
@@ -140,6 +161,9 @@ defmodule Ex37 do
 end
 
 defmodule Ex38 do
+  @moduledoc """
+  Solution for ex38
+  """
   def solve(str) do
     if String.length(str) <= 2 do
       false
@@ -155,9 +179,12 @@ defmodule Ex38 do
 end
 
 defmodule Ex39 do
-  def solve() do
-    for a <- 9..1, b <- 1..9, c <- 1..9, cond(a, b, c), do: {a, b, c}
+  @moduledoc """
+  Solution for ex39
+  """
+  def solve do
+    for a <- 9..1, b <- 1..9, c <- 1..9, check(a, b, c), do: {a, b, c}
   end
 
-  def cond(a, b, c), do: a * c + b == 10 * c
+  def check(a, b, c), do: a * c + b == 10 * c
 end
